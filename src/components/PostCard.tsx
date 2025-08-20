@@ -20,6 +20,7 @@ import {
 import { FC, useState, useTransition } from "react";
 import { Post } from "@/generated/prisma";
 import { deletePost } from "@/app/actions/actions";
+import Link from "next/link";
 
 const PostCard: FC<{ post: Post }> = ({ post }) => {
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
@@ -27,7 +28,9 @@ const PostCard: FC<{ post: Post }> = ({ post }) => {
 
   return (
     <div
-      className={`post bg-white border-2 border-neutral-300 p-[2.5rem] rounded-lg grid grid-cols-[1fr_2.4rem] gap-[1.5rem] ${isPending ? 'loading' : ''}`}
+      className={`post bg-white border-2 border-neutral-300 p-[2.5rem] rounded-lg grid grid-cols-[1fr_2.4rem] gap-[1.5rem] ${
+        isPending ? "loading" : ""
+      }`}
     >
       <h2 className="post-title text-[2rem] font-semibold col-1 row-1">
         {post.title}
@@ -36,15 +39,17 @@ const PostCard: FC<{ post: Post }> = ({ post }) => {
         {post.content}
       </p>
       <DropdownMenu>
-        <DropdownMenuTrigger className="cursor-pointer col-2 row-1">
+        <DropdownMenuTrigger className="cursor-pointer col-2 row-1 flex">
           <EllipsisVertical />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuGroup>
             <DropdownMenuItem className="hover:bg-neutral-200 cursor-pointer">
-              Edit
+              <Link href={`/post/${post.id}`}>Show</Link>
             </DropdownMenuItem>
-
+            <DropdownMenuItem className="hover:bg-neutral-200 cursor-pointer">
+              <Link href={`/post/${post.id}/edit`}>Edit</Link>
+            </DropdownMenuItem>
             <DropdownMenuItem
               className="text-red-800 hover:bg-neutral-200 cursor-pointer"
               onClick={() => setShowDeleteAlert(true)}

@@ -33,7 +33,7 @@ export default function RootLayout({
 
           <div className="ml-auto text-[1.8rem] flex gap-[1rem] items-center">
             <Link href="/">Posts</Link>
-            <Link href="/create-post" className="p-[0.5rem_1rem] rounded-lg bg-blue-500 text-white text-center min-w-[8rem]">Create</Link>
+            <Link href="/post" className="p-[0.5rem_1rem] rounded-lg bg-blue-500 text-white text-center min-w-[8rem]">Create</Link>
           </div>
         </nav>
         <div className="wrapper bg-neutral-200 p-[5rem] h-[calc(100vh-8rem)] overflow-y-auto">
