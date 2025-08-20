@@ -17,7 +17,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { FC, useState, useTransition } from "react";
+import React, { FC, useState, useTransition } from "react";
 import { Post } from "@/generated/prisma";
 import { deletePost } from "@/app/actions/actions";
 import Link from "next/link";
@@ -28,14 +28,14 @@ const PostCard: FC<{ post: Post }> = ({ post }) => {
 
   return (
     <div
-      className={`post bg-white border-2 border-neutral-300 p-[2.5rem] rounded-lg grid grid-cols-[1fr_2.4rem] gap-[1.5rem] ${
+      className={`post bg-white border-2 border-neutral-300 p-[2.5rem] rounded-lg grid grid-cols-[1fr_2.4rem] gap-[1.5rem] max-h-[18rem] ${
         isPending ? "loading" : ""
       }`}
     >
-      <h2 className="post-title text-[2rem] font-semibold col-1 row-1">
+      <h2 className="post-title text-[1.85rem] font-semibold col-1 row-1">
         {post.title}
       </h2>
-      <p className="post-content text-[1.7rem] col-[1/span_2] row-2">
+      <p className="post-content text-[1.7rem] col-[1/span_2] row-2 line-clamp-3 wrap-break-word">
         {post.content}
       </p>
       <DropdownMenu>
